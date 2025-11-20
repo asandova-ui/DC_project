@@ -10,7 +10,7 @@
 # RESET & IRQ
 ##############################################################################
 
- .global main, irq1_handler, irq2_handler, irq3_handler
+ .global main, irq1_handler, irq2_handler, irq3_handler, test_mult
 
  .section .boot
 reset_vec:
@@ -45,6 +45,11 @@ loop_init_bss:
  addi a0, a0, 4
  blt a0, a1, loop_init_bss
 end_init_bss:
+
+######################################
+### Test multiplication instructions
+######################################
+call test_mult
 
 ######################################
 ### Test multiplication instructions
@@ -143,10 +148,12 @@ test_mult:
  mulhsu t4, t0, t1  # MULHSU: t4 = -1 (signed(-1) × unsigned(2) = -2, high=-1)
  mulhu t5, t0, t1   # MULHU: t5 = 1 (unsigned(0xFFFFFFFF) × unsigned(2) = 0x1FFFFFFFE, high=1)
 
- # All tests completed
- # Results are in registers t2-t5 for the last test case
- # In a real scenario, you might want to store these to memory
- # or use breakpoints to inspect the results
+# All tests completed
+# Results are in registers t2-t5 for the last test case
+# In a real scenario, you might want to store these to memory
+# or use breakpoints to inspect the results
+
+ret
 
 # call main
  call main

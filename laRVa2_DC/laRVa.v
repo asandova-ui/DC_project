@@ -215,7 +215,7 @@ assign sh_out = left_sh ?
 	wire [31:0]multout;
 	multiplier mul0(.clk(clk), .reset(reset),
 					.a(aluIn2), .b(aluIn1),
-					.ua(funct3[1]), .ub(&funct3[1:0]), .hm(|funct3[1:0]),
+					.ua(funct3[1]), .ub(funct3[1]), .hm(|funct3[1:0]),
 					.load(opmul), .busy(mbusy), .out(multout) ); 
 	/////////////////////////////////////////////////
 	// divider (a/b or a%b)
