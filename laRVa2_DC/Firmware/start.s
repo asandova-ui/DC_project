@@ -158,7 +158,7 @@ test_mult:
  # 0xFFFFFFFF × 2 = 0x1FFFFFFFE
  li t0, -1          # rs1 = 0xFFFFFFFF (unsigned: 4294967295)
  li t1, 2           # rs2 = 2
- mul t2, t0, t1     # MUL: t2 = 0xFFFFFFFE (-2 signed, 4294967294 unsigned)
+ mul t2, t0, t1     # MUL: t2 = 0xFFFFFFFE (-1 signed x 2 signed)
  mulh a0, t0, t1    # MULH: t3 = -1 (signed: -1 × 2 = -2, high=-1)
  mulhsu a1, t0, t1  # MULHSU: t4 = -1 (signed(-1) × unsigned(2) = -2, high=-1)
  mulhu a2, t0, t1   # MULHU: t5 = 1 (unsigned(0xFFFFFFFF) × unsigned(2) = 0x1FFFFFFFE, high=1)
